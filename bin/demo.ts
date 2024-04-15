@@ -2,6 +2,7 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { DemoStack } from '../lib/demo-stack';
+import { PhotoStack } from '../lib/photo-stack';
 
 const app = new cdk.App();
-new DemoStack(app, 'DemoStack');
+new PhotoStack(app, 'PhotoStack');

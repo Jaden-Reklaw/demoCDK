@@ -48,10 +48,10 @@ export class DemoStack extends cdk.Stack {
 
     //how to send output info to cloudformation using cdk
     //this will list the name of the bucket in cloudformation in the output tab
-    new CfnOutput(this, 'MyL2BucketName', {
-      value: myL2Bucket.bucketName
-    })
+    // new CfnOutput(this, 'MyL2BucketName', {
+    //   value: myL2Bucket.bucketName
+    // })
 
-    new L3Bucket(this, 'MyL3Bucket', 3)
+    // new L3Bucket(this, 'MyL3Bucket', 3)
   }
 }
