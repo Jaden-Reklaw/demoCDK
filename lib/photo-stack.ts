@@ -12,6 +12,8 @@ export class PhotosStack extends cdk.Stack {
         this.stackSuffix = Fn.select(4, Fn.split('-', shortStackId));
     }
 
+    public readonly photosBucketArn: string;
+
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
@@ -22,10 +24,8 @@ export class PhotosStack extends cdk.Stack {
             bucketName: `photos-bucket-${this.stackSuffix}`
         });
 
-        new CfnOutput(this, 'photos-bucket', {
-            value:photosBucket.bucketArn,
-            exportName: 'photos-bucket'
-        })
+        //Assign the an internal resource to a public value to be used on other stack
+        this.photosBucketArn = photosBucket.bucketArn;
 
         // if you check the logical id it will
         // create a new resource
