@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Bucket, CfnBucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import { Duration, CfnOutput, CfnParameter } from 'aws-cdk-lib';
+import { Duration, CfnParameter } from 'aws-cdk-lib';
 
 //L3 Resource
 class L3Bucket extends Construct {

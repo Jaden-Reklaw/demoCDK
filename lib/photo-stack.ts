@@ -1,10 +1,10 @@
 import * as cdk from 'aws-cdk-lib';
 import { Bucket, CfnBucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import { Fn } from 'aws-cdk-lib';
+import { CfnOutput, Fn } from "aws-cdk-lib";
 
 
-export class PhotoStack extends cdk.Stack {
+export class PhotosStack extends cdk.Stack {
     
     private stackSuffix: string;    
     private initializeSuffix() {
@@ -18,9 +18,14 @@ export class PhotoStack extends cdk.Stack {
         this.initializeSuffix()
         //logical id is PhotoBucket
         //physical name is photobucket-123abc
-        new Bucket(this, 'PhotoBucket', {
+        const photosBucket = new Bucket(this, 'PhotosBucket2', {
             bucketName: `photos-bucket-${this.stackSuffix}`
         });
+
+        new CfnOutput(this, 'photos-bucket', {
+            value:photosBucket.bucketArn,
+            exportName: 'photos-bucket'
+        })
 
         // if you check the logical id it will
         // create a new resource
